@@ -1,0 +1,11 @@
+Visualizador de OBJ's
+
+Para movimientos de la camara: 
+w = Movimiento de la camara en eje Y hacia arriba
+s = Movimiento de la camara en eje Y hacia abajo
+a = Movimiento de la camara en eje x hacia derecha 
+d = Movimiento de la camara en eje x hacia derecha 
+
+Hacer que el modelo explote: 
+Tecla P = Explotar 
+Tecla O = Regresar a la normalidad 
