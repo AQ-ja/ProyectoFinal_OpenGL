@@ -24,6 +24,7 @@ pygame.image.load('white.png')
 pygame_icon =pygame.image.load('ash.png')
 pygame.display.set_caption('MODEL VIEWER')
 pygame.display.set_icon(pygame_icon)
+by = pygame.Color("darkslategray3")
 
 
 rend = Renderer(screen)
@@ -130,11 +131,12 @@ while isRunning:
                 mixer.music.play(1) 
                 rend.scene.append( face )
                 
+
     rend.tiempo += deltaTime
     deltaTime = clock.tick(60) / 1000
 
     rend.render()
-    
+    screen.fill(by)
 
     pygame.display.flip()
 
