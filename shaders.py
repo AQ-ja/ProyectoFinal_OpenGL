@@ -111,29 +111,6 @@ void main()
 """
 
 
-
-atlantis = """
-#version 450
-layout(location = 0) out vec4 fragColor;
-
-
-in float intensity;
-in vec2 vertexTexcoords;
-in vec3 fnormal;
-
-
-uniform sampler2D tex;
-uniform vec4 diffuse;
-uniform vec4 ambient;
-
-
-void main()
-{
-	fragColor = vec4(fnormal, 1.1);
-}
-"""
-
-
 vertex_toon_shader = """
 #version 450
 layout (location = 0) in vec3 position;

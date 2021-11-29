@@ -36,7 +36,7 @@ mixer.music.set_volume(0.7)
 mixer.music.play(-1)
 
 rend.scene.append( face )
-rend.pointLight4
+rend.pointLight
 
 isRunning = True
 while isRunning:
@@ -46,9 +46,14 @@ while isRunning:
 
     # Traslacion de camara en eje X
     if keys[K_d]:
-        rend.camPosition.x += 1 * deltaTime
+        target = rend.scene[0].position
+        rend.rotateRight(target, 2)
+        #rend.camPosition.x += 1 * deltaTime
     if keys[K_a]:
-        rend.camPosition.x -= 1 * deltaTime
+        target = rend.scene[0].position
+        rend.rotateLeft(target, 2)
+        #rend.camPosition.x -= 1 * deltaTime
+
     # Traslacion de camara en eje Y
     if keys[K_s]:
         rend.camPosition.y -= 1 * deltaTime
@@ -124,7 +129,7 @@ while isRunning:
                 mixer.music.set_volume(0.6)
                 mixer.music.play(1) 
                 rend.scene.append( face )
-
+                
     rend.tiempo += deltaTime
     deltaTime = clock.tick(60) / 1000
 

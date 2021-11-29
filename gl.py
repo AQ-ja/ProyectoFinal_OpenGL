@@ -139,22 +139,40 @@ class Renderer(object):
         self.scene = []
 
         self.pointLight = glm.vec3(-10, 0, -5)
-        self.pointLight2 = glm.vec3(10, 0, -3)
-        self.pointLight3 = glm.vec3(3, 1, -2)
-        self.pointLight4 = glm.vec3(6, 2, 5)
+
 
         self.tiempo = 0
         self.valor = 0
+        self.angle = 0
+        self.angleY = 0
+        self.viewMatrix = glm.mat4(1)
+        self.distanceRadius = 5
 
         # View Matrix
         self.camPosition = glm.vec3(0,0,0)
         self.camRotation = glm.vec3(0,0,0) # pitch, yaw, roll
-
         # Projection Matrix
         self.projectionMatrix = glm.perspective(glm.radians(60),            # FOV en radianes
                                                 self.width / self.height,   # Aspect Ratio
                                                 0.1,                        # Near Plane distance
                                                 1000)                       # Far plane distance
+
+
+    def rotateLeft(self, target, amount):
+        self.angle += amount
+        self.camPosition.x = glm.sin(glm.radians(self.angle)) * self.distanceRadius
+        self.camPosition.z = glm.cos(glm.radians(self.angle)) * self.distanceRadius
+        self.viewMatrix = glm.lookAt(target - self.camPosition, target, glm.vec3(0.0, 1.0, 0.0))
+        
+
+
+    def rotateRight(self, target, amount):
+        self.angle -= amount
+        self.camPosition.x = glm.sin(glm.radians(self.angle)) * self.distanceRadius
+        self.camPosition.z = glm.cos(glm.radians(self.angle)) * self.distanceRadius
+        self.viewMatrix = glm.lookAt(target - self.camPosition, target, glm.vec3(0.0, 1.0, 0.0))
+
+
 
 
     def getViewMatrix(self):
